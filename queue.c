@@ -11,6 +11,23 @@ typedef struct queue{
     int size;
 }Queue;
 
+Queue *create_queue();
+void insere_final(Queue *q, int dado);
+void printa_fila(Queue *q);
+
+
+int main(){
+
+    Queue *f = create_queue();
+    insere_final(f, 5);
+    insere_final(f, 2);
+    insere_final(f, 3);
+    printa_fila(f);
+
+
+
+    return 0;
+}
 
 Queue *create_queue(){
     Queue *q = (Queue*)malloc(sizeof(Queue));
@@ -22,6 +39,7 @@ Queue *create_queue(){
         printf("A memoria nao foi alocada com sucesso");
     }
 }
+
 void insere_final(Queue *q, int dado){
     No *new = (No*)malloc(sizeof(No));
     No *aux = q->head;
@@ -36,21 +54,24 @@ void insere_final(Queue *q, int dado){
         q->size++;
     }
     else{
-        while (aux->prox != NULL){
+        while (1){
+            if (aux->prox == NULL)
+                break;
             aux = aux->prox;
+            
         }
         aux->prox = new;
         new->prox = NULL;
         new->data = dado;
         q->size++;
     }
-
 }
-int main(){
 
+void printa_fila(Queue *q){
+    No *aux = q->head;
+    while(aux != NULL){
+        printf("%d ", aux->data);
+        aux = aux->prox;
+    }
 
-
-
-
-    return 0;
 }
