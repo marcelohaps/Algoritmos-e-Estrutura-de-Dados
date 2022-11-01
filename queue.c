@@ -14,7 +14,7 @@ typedef struct queue{
 Queue *create_queue();
 void insere_final(Queue *q, int dado);
 void printa_fila(Queue *q);
-
+void remove_inicio(Queue *q);
 
 int main(){
 
@@ -22,6 +22,7 @@ int main(){
     insere_final(f, 5);
     insere_final(f, 2);
     insere_final(f, 3);
+    
     printa_fila(f);
 
 
@@ -64,6 +65,17 @@ void insere_final(Queue *q, int dado){
         new->prox = NULL;
         new->data = dado;
         q->size++;
+    }
+}
+
+void remove_inicio(Queue *q){
+    No *aux = q->head;
+    if (aux == NULL){
+        printf("Fila esta vazia");
+    }
+    else{
+        q->head = aux->prox;
+        free(aux);
     }
 }
 
