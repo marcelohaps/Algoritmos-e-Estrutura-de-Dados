@@ -13,8 +13,9 @@ typedef struct queue{
 
 Queue *create_queue();
 void insere_final(Queue *q, int dado);
-void printa_fila(Queue *q);
 void remove_inicio(Queue *q);
+void printa_fila(Queue *q);
+
 
 int main(){
 
